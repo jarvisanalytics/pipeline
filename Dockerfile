@@ -30,4 +30,9 @@ RUN curl -o aws-iam-authenticator curl -o aws-iam-authenticator https://amazon-e
 # Install nodejs 12.x
 RUN curl -sL https://deb.nodesource.com/setup_12.x | bash - && apt-get install -y nodejs
 
+# Copy index.html
+COPY index.html /var/www/html/index.html
+
+EXPOSE 80
+
 ENTRYPOINT ["/entrypoint.sh"]
