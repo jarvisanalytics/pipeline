@@ -22,19 +22,48 @@ class Tools extends CLI
         $options->setHelp('A simple JWT token generator.');
 
         $options->registerCommand('jwt', 'Generate a JWT token.');
-        $options->registerOption('secret', 'The JWT token secret key.', 's',
-            true, 'jwt');
-        $options->registerOption('issuer', 'The JWT token issuer (iss).', 'i',
-            true, 'jwt');
-        $options->registerOption('scope',
-            'The JWT token scope (scope). Eg: appointment,foo,bar', 'c', true,
-            'jwt');
-        $options->registerOption('expire_in',
-            'The no. of days before the token expires.', 'e', true, 'jwt');
-        $options->registerOption('timezone',
-            'The timezone to use when generating a token..', 'l', false, 'jwt');
-        $options->registerOption('client_id',
-            'The JWT token client id (client_id).', 'l', false, 'jwt');
+        $options->registerOption(
+            'secret',
+            'The JWT token secret key.',
+            's',
+            true,
+            'jwt'
+        );
+        $options->registerOption(
+            'issuer',
+            'The JWT token issuer (iss).',
+            'i',
+            true,
+            'jwt'
+        );
+        $options->registerOption(
+            'scopes',
+            'The JWT token scope (scope). Eg: appointment,foo,bar',
+            'c',
+            true,
+            'jwt'
+        );
+        $options->registerOption(
+            'expire_in',
+            'The no. of days before the token expires.',
+            'e',
+            true,
+            'jwt'
+        );
+        $options->registerOption(
+            'timezone',
+            'The timezone to use when generating a token..',
+            'l',
+            false,
+            'jwt'
+        );
+        $options->registerOption(
+            'client_id',
+            'The JWT token client id (client_id).',
+            'l',
+            false,
+            'jwt'
+        );
     }
 
     /**
@@ -73,9 +102,9 @@ class Tools extends CLI
         $token = (new Builder())
             ->withClaim('iss', $options->getOpt('issuer'))
             ->withClaim('exp', $expireAt)
-            ->withClaim('scope', $options->getOpt('scope'));
+            ->withClaim('scope', $options->getOpt('scopes'));
 
-        if($options->getOpt('client_id')) {
+        if ($options->getOpt('client_id')) {
             $token->withClaim('client_id', (int) $options->getOpt('client_id'));
         }
 
