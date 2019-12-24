@@ -33,6 +33,9 @@ RUN curl -sL https://deb.nodesource.com/setup_12.x | bash - && apt-get install -
 # Copy index.html
 COPY index.html /var/www/html/index.html
 
+# COPY cli folder.
+COPY cli/ /root/cli/
+
 EXPOSE 80
 
 ENTRYPOINT ["/entrypoint.sh"]
