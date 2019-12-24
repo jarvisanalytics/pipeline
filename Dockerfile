@@ -33,8 +33,11 @@ RUN curl -sL https://deb.nodesource.com/setup_12.x | bash - && apt-get install -
 # Copy index.html
 COPY index.html /var/www/html/index.html
 
-# COPY cli folder.
+# Copy cli folder.
 COPY cli/ /root/cli/
+RUN cd /root/cli && composer install
+RUN cp /root/cli/tools.sh /usr/bin/tools
+RUN chmod +x /usr/bin/tools
 
 EXPOSE 80
 
