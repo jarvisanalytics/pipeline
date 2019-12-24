@@ -1,0 +1,14 @@
+{
+    "name": "jarvisanalytics/pipeline-cli",
+    "authors": [
+        {
+            "name": "Omar Usman",
+            "email": "omar@mesasix.com"
+        }
+    ],
+    "require": {
+        "splitbrain/php-cli": "^1.1",
+        "lcobucci/jwt": "3.3.1",
+        "nesbot/carbon": "^2.28"
+    }
+}
